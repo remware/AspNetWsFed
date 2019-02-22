@@ -22,7 +22,7 @@ namespace Seller.Identity.Controllers
         {
             if (User == null || !User.Identities.Any(identity => identity.IsAuthenticated))
             {
-                var redirectUrl = Url.Action(nameof(Index), "Home");
+                var redirectUrl = Url.Action(nameof(SignIn));
                 return Challenge(
                     new AuthenticationProperties { RedirectUri = redirectUrl },
                     // OpenIdConnectDefaults.AuthenticationScheme
@@ -30,7 +30,7 @@ namespace Seller.Identity.Controllers
             }           
 
 
-            return RedirectToAction(nameof(AppNext)); ;
+            return RedirectToAction(nameof(AppNext));
         }
 
         [Authorize]
